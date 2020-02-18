@@ -1,0 +1,13 @@
+- name: Run the specified KB article patch
+  hosts: all
+  connection: winrm
+
+  tasks:
+  - name: Install the specified KB patch
+    win_updates:
+      category_name:
+      - SecurityUpdates
+      whitelist:
+      - '{{ article }}'
+      reboot: no
+      reboot_timeout: 420

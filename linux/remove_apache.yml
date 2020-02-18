@@ -1,0 +1,22 @@
+---
+- name: Apache server installed
+  hosts: all
+  become: yes
+
+  tasks:
+
+  - name: Apache stopped and disabled
+    service:
+      name: httpd
+      state: started
+      enabled: true
+
+  - name: Apache removed
+    yum:
+      name: httpd
+      state: absent
+
+  - name: Remove index.html
+    file:
+      path: /var/www/html/index.html
+      state: absent

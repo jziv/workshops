@@ -1,0 +1,9 @@
+---
+- hosts: Windows
+  name: This is my Windows patching playbook
+  tasks:
+    - name: Install Windows Updates
+      win_updates:
+        category_names: "{{ categories }}"
+        reboot: '{{ reboot_server | default(yes) }}'
+
